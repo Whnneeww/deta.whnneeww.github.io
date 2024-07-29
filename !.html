@@ -6,40 +6,39 @@
 </head> 
 <body> 
   <h1>グリップボードへのデータ保存</h1> 
-  ボタンを押して、timestampまたはuserの値をグリップボードに保存します。 2.1
- 
+  ボタンを押して、timestampまたはuserの値をグリップボードに保存します。
   <button id="timestampButton">timestamp</button> 
   <button id="userButton">user</button> 
- 
+
   <script> 
-var fdeta=0;
-const url = "https://clouddata.scratch.mit.edu/logs?projectid=1048805354&amp;limit=1&amp;offset=0"; 
-fetch(url) 
-  .then(response =&gt; response.json()) 
-  .then(data =&gt; { 
-    var fdeta= data; // 取得したJSONデータをコンソールに出力 
-  }) 
-  .catch(error =&gt; { 
-    console.error("エラーが発生しました:", error); 
-  });
-    const dataObject = JSON.parse(fdata); 
-    const timestamp = dataObject[0].timestamp; 
-    const user = dataObject[0].user; 
- 
-    // グリップボードへの保存関数（例：localStorageを使用） 
-    function saveToGripboard(key, value) { 
-      localStorage.setItem(key, value); 
-      console.log(`${key} の値をグリップボードに保存しました: ${value}`); 
-    } 
- 
-    // ボタンクリックイベント 
-    $("#timestampButton").click(() => { 
-      saveToGripboard("timestamp", timestamp); 
-    }); 
- 
-    $("#userButton").click(() => { 
-      saveToGripboard("user", user); 
-    }); 
+    let fdeta = 0; 
+    const url = "https://clouddata.scratch.mit.edu/logs?projectid=1048805354&limit=1&offset=0"; 
+
+    fetch(url)    
+      .then(response => response.json())    
+      .then(data => {      
+        fdeta = data; // 取得したJSONデータを変数に格納
+        const timestamp = fdeta[0].timestamp;      
+        const user = fdeta[0].user; 
+
+        // グリップボードへの保存関数（例：localStorageを使用）      
+        function saveToGripboard(key, value) {        
+          localStorage.setItem(key, value);        
+          console.log(`${key} の値をグリップボードに保存しました: ${value}`);      
+        }        
+
+        // ボタンクリックイベント     
+        $("#timestampButton").click(() => {        
+          saveToGripboard("timestamp", timestamp);      
+        });        
+
+        $("#userButton").click(() => {        
+          saveToGripboard("user", user);      
+        });     
+      })    
+      .catch(error => {      
+        console.error("エラーが発生しました:", error);    
+      }); 
   </script> 
 </body> 
-</html> 
+</html>
