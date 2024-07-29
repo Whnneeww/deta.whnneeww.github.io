@@ -6,7 +6,7 @@
 </head> 
 <body> 
   <h1>グリップボードへのデータ保存</h1> 
-  ボタンを押して、timestampまたはuserの値をグリップボードに保存します。 2
+  ボタンを押して、timestampまたはuserの値をグリップボードに保存します。 2.1
  
   <button id="timestampButton">timestamp</button> 
   <button id="userButton">user</button> 
@@ -22,7 +22,7 @@ fetch(url)
   .catch(error =&gt; { 
     console.error("エラーが発生しました:", error); 
   });
-    const dataObject = JSON.parse(data); 
+    const dataObject = JSON.parse(fdata); 
     const timestamp = dataObject[0].timestamp; 
     const user = dataObject[0].user; 
  
