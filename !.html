@@ -6,17 +6,18 @@
 </head> 
 <body> 
   <h1>グリップボードへのデータ保存</h1> 
-  ボタンを押して、timestampまたはuserの値をグリップボードに保存します。 
+  ボタンを押して、timestampまたはuserの値をグリップボードに保存します。 2
  
   <button id="timestampButton">timestamp</button> 
   <button id="userButton">user</button> 
  
   <script> 
+var fdeta=0;
 const url = "https://clouddata.scratch.mit.edu/logs?projectid=1048805354&amp;limit=1&amp;offset=0"; 
 fetch(url) 
   .then(response =&gt; response.json()) 
   .then(data =&gt; { 
-    console.log(data); // 取得したJSONデータをコンソールに出力 
+    var fdeta= data; // 取得したJSONデータをコンソールに出力 
   }) 
   .catch(error =&gt; { 
     console.error("エラーが発生しました:", error); 
